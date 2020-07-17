@@ -24,8 +24,6 @@ public class RecomendacoesC {
     RecomendacoesDao recomen = new RecomendacoesDao();
 
 
-
-    @GetMapping("/recomendados")
     public List<Aula> recomendados(@RequestParam("categoria") String cat) throws JSONException {
         List<Aula> lista = new ArrayList<Aula>();
         List<Aula> list = new LinkedList<Aula>();
@@ -50,11 +48,56 @@ public class RecomendacoesC {
             }
 
         }
+        return list;
+    }
        
             
+        @GetMapping("/visualizacoes")
+        public List<Aula> recomendadosRanqueado(@RequestParam("categoria") String cat) throws JSONException {
+            List<Aula> lista = new ArrayList<Aula>();
+            List<Aula> list = new LinkedList<Aula>();
+            List<String> rec = new ArrayList<String>();
+            List<String> views = new ArrayList<String>();
+            lista = ont.query();
+            rec = recomen.comentariosCont(cat);
+            views=recomen.visualizacoesCont();
+    
+            for (String str : views) {
+    
+                for (Aula a : lista) {
+    
+                    
+                    if (str.equals(a.getNome())) {
+                      
+                        list.add(a);
+                      
+                    }
 
+                    }
+                
+                }
+                 for (Aula a : lista) {
+                for (String recomendados : rec) {
+                   
+                    
+                    
+                        if (recomendados.equals(a.getNome())&&!list.contains(a)) {
+                         
+                            list.add(a);
+                           
+                        }
+                        }
+                    
+                    }
+                    for(Aula a: lista){
+                        if(!list.contains(a)){
+                            list.add(a);
+                        }
+                    }
+            
         
-
+        
+                    list.stream().distinct();
         return list;
 
     }

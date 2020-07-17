@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import java.util.stream.Collectors;
+
 
 import com.example.robotica.Model.Aula;
 import com.example.robotica.Model.Programacao;
@@ -33,7 +33,6 @@ import org.apache.jena.reasoner.ReasonerRegistry;
 import org.apache.jena.reasoner.ValidityReport;
 import org.apache.jena.shared.JenaException;
 import org.apache.jena.update.UpdateAction;
-import org.springframework.web.bind.annotation.GetMapping;
 
 public class OntologyManager {
 

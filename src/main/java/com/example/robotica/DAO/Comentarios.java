@@ -29,8 +29,8 @@ public boolean comentar(Comentario comentario){
             connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
             final Statement statement = connection.createStatement();
            
-               statement.execute("INSERT INTO COMENTARIOS( IDUSER, CONTEUDO, DATA, PLANO) VALUES('"
-                    + comentario.getIdUser()+ "','" + comentario.getConteudo() + "','" + comentario.getData()+"','"
+               statement.execute("INSERT INTO COMENTARIOS( IDUSER, CONTEUDO,CATEGORIA, DATA, PLANO) VALUES('"
+                    + comentario.getIdUser()+ "','" + comentario.getConteudo() + "','" + user.categId(comentario.getIdUser())+"','" + comentario.getData()+"','"
                     + comentario.getPlanoAula() + "')");  
                     statement.close();
 

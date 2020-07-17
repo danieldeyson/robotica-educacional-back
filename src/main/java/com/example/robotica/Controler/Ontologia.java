@@ -33,13 +33,9 @@ public class Ontologia {
 			throws JSONException {
     
 		List<Aula> listareco =new ArrayList<Aula>();
-		List<Aula> listquery =new ArrayList<Aula>();
 		
-		
-		listareco= rec.recomendados(categoria);
-		listquery=ont.query();
-		
-		listareco.addAll(listquery);
+		listareco= rec.recomendadosRanqueado(categoria);
+	
         return ont.paginar(listareco,index);
 	}
 

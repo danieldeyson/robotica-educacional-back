@@ -95,7 +95,7 @@ public class RecomendacoesDao {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
 
-            PreparedStatement stmt = connection.prepareStatement("select * from RECOMENDACOES WHERE CATEGORIA='"+cat+"'ORDER BY ID DESC");
+            PreparedStatement stmt = connection.prepareStatement("select * from RECOMENDACOES WHERE CATEGORIA='"+cat+"'ORDER BY ID DESC LIMIT 10");
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
@@ -220,5 +220,25 @@ public class RecomendacoesDao {
     }
 
 
-
+    public List<String> comentariosCont(String cat) throws JSONException {
+ 
+        List<String> lista=new LinkedList<String>();
+      
+        ConectionSQLite.connect();
+        Connection connection;
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM COMENTARIOS WHERE CATEGORIA='"+cat+"' GROUP BY PLANO ORDER BY COUNT(*) DESC");
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                lista.add(resultSet.getString("PLANO"));
+            
+            }
+            resultSet.close();
+            return lista;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+}
 }
