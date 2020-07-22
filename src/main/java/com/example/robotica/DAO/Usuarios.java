@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.example.robotica.Model.Professor;
-import com.example.robotica.services.ConectionSQLite;
+import com.example.robotica.services.ConectionPostgreSQL;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
@@ -23,12 +23,12 @@ public class Usuarios {
 
     public int cadastrar(Professor usuario) throws SQLException {
 
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
         Connection connection;
 
         try {
 
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
             final Statement statement = connection.createStatement();
             ResultSet result = statement
                     .executeQuery("SELECT * from USUARIO WHERE EMAIL='" + usuario.getUsuario() + "'");
@@ -59,24 +59,26 @@ public class Usuarios {
 
     public Professor loguin(String loguin, String senha) {
 
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
         Professor user = new Professor();
         final Connection connection;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
             PreparedStatement stmt = connection
                     .prepareStatement("select * from USUARIO where EMAIL='" + loguin + "'and SENHA='" + senha + "'");
             ResultSet resultSet = stmt.executeQuery();
 
-            user.setCidade(resultSet.getString("CIDADE"));
-            user.setSexo(resultSet.getString("SEXO"));
-            user.setEscola(resultSet.getString("CATEGORIA"));
-            user.setId(resultSet.getInt("ID"));
-            user.setSenha(resultSet.getString("SENHA"));
-            user.setIdade(resultSet.getInt("IDADE"));
-            user.setNome(resultSet.getString("NOME"));
-            user.setUsuario(resultSet.getString("EMAIL"));
+            if (resultSet.next()) {
+                user.setCidade(resultSet.getString("CIDADE"));
+                user.setSexo(resultSet.getString("SEXO"));
+                user.setEscola(resultSet.getString("CATEGORIA"));
+                user.setId(resultSet.getInt("ID"));
+                user.setSenha(resultSet.getString("SENHA"));
+                user.setIdade(resultSet.getInt("IDADE"));
+                user.setNome(resultSet.getString("NOME"));
+                user.setUsuario(resultSet.getString("EMAIL"));
+            }
 
             resultSet.close();
             return user;
@@ -92,11 +94,11 @@ public class Usuarios {
     public List<Professor> listarUsers() throws JSONException {
 
         List<Professor> lista = new LinkedList<>();
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
 
         Connection connection;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
             PreparedStatement stmt = connection.prepareStatement("select * from USUARIO");
             ResultSet resultSet = stmt.executeQuery();
@@ -157,7 +159,7 @@ public class Usuarios {
             }
             consulta+= "where ID='" + professor.getId() + "'";
 
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
             Statement stmt = connection.createStatement();
             stmt.execute(consulta);
 
@@ -180,7 +182,7 @@ public class Usuarios {
       String senha=gerarSenhaAleatoria();
       
       Connection connection =
-      DriverManager.getConnection("jdbc:sqlite:BancoSQL.db"); Statement
+      DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require"); Statement
       stmt=connection.createStatement(); stmt.execute("update USUARIO set SENHA='"
       + senha + "'where ID='" + id + "'"); 
       if( enviarEmail(email, senha)){
@@ -233,11 +235,11 @@ return true;
 
 
 public String categId(int id) throws SQLException {
-    ConectionSQLite.connect();
+    ConectionPostgreSQL.connect();
     Connection connection;
 
     
-        connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+        connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
         final Statement statement = connection.createStatement();
         ResultSet result;
 		try {
@@ -261,12 +263,12 @@ public String categId(int id) throws SQLException {
 
     }
     public Professor nomeId(int id) throws SQLException {
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
         Professor prof = new Professor();
         Connection connection;
     
         
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
             final Statement statement = connection.createStatement();
             ResultSet result;
             try {

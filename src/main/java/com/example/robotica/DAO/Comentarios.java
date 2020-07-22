@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.example.robotica.Model.Comentario;
-import com.example.robotica.services.ConectionSQLite;
+import com.example.robotica.services.ConectionPostgreSQL;
 
 
 
@@ -21,12 +21,12 @@ Usuarios user= new Usuarios();
 public boolean comentar(Comentario comentario){
 
 
-  ConectionSQLite.connect();
+  ConectionPostgreSQL.connect();
         Connection connection;
 
         try {
 
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
             final Statement statement = connection.createStatement();
            
                statement.execute("INSERT INTO COMENTARIOS( IDUSER, CONTEUDO,CATEGORIA, DATA, PLANO) VALUES('"
@@ -55,11 +55,11 @@ public boolean comentar(Comentario comentario){
        
        
         List<Comentario> lista= new LinkedList<>();
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
       
       Connection connection;
       try {
-          connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+          connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
        PreparedStatement stmt = connection.prepareStatement("select * from COMENTARIOS where PLANO='"+plano+"'");
          ResultSet resultSet = stmt.executeQuery();         
@@ -97,11 +97,11 @@ public boolean comentar(Comentario comentario){
        
        
         List<Comentario> lista= new LinkedList<>();
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
       
       Connection connection;
       try {
-          connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+          connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
        PreparedStatement stmt = connection.prepareStatement("select * from COMENTARIOS");
          ResultSet resultSet = stmt.executeQuery();         
@@ -140,12 +140,12 @@ public boolean comentar(Comentario comentario){
 
 
 
-  ConectionSQLite.connect();
+  ConectionPostgreSQL.connect();
         Connection connection;
 
         try {
 
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
             final Statement statement = connection.createStatement();
            
                statement.execute("DELETE FROM COMENTARIOS WHERE ID='"+id+"'");  

@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.example.robotica.Model.Recomendacao;
-import com.example.robotica.services.ConectionSQLite;
+import com.example.robotica.services.ConectionPostgreSQL;
 
 import org.springframework.boot.configurationprocessor.json.JSONException;
 
@@ -20,12 +20,12 @@ public class RecomendacoesDao {
     public void cadastrar(Recomendacao reco) throws SQLException {
         
 
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
         Connection connection;
 
         try {
 
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
             final Statement statement = connection.createStatement();
             
             statement.execute("INSERT INTO RECOMENDACOES(IDUSER, AULA, CATEGORIA) VALUES('"
@@ -48,11 +48,11 @@ public class RecomendacoesDao {
     public List<Recomendacao> listarrecs() throws JSONException {
 
         List<Recomendacao> lista = new LinkedList<>();
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
 
         Connection connection;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
             PreparedStatement stmt = connection.prepareStatement("select * from RECOMENDACOES");
             ResultSet resultSet = stmt.executeQuery();
@@ -89,11 +89,11 @@ public class RecomendacoesDao {
     public List<Recomendacao> recomendar(String cat) throws JSONException {
 
         List<Recomendacao> lista = new LinkedList<>();
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
 
         Connection connection;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
             PreparedStatement stmt = connection.prepareStatement("select * from RECOMENDACOES WHERE CATEGORIA='"+cat+"'ORDER BY ID DESC LIMIT 10");
             ResultSet resultSet = stmt.executeQuery();
@@ -130,11 +130,11 @@ public class RecomendacoesDao {
 
         int resultado=0;
       
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
 
         Connection connection;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
             PreparedStatement stmt = connection.prepareStatement("select * from VISUALIZACOES where AULA='"+aula+"'");
             ResultSet resultSet = stmt.executeQuery();
@@ -160,12 +160,12 @@ public class RecomendacoesDao {
  public void visualizar(String aula,int idUser) throws SQLException {
         
 
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
         Connection connection;
 
         try {
 
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
              Statement statement = connection.createStatement();
             ResultSet result = statement
                     .executeQuery("SELECT * from VISUALIZACOES WHERE AULA='" + aula+ "' and IDUSER='"+idUser+"'");
@@ -192,11 +192,11 @@ public class RecomendacoesDao {
    
         List<String> lista=new LinkedList<String>();
       
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
 
         Connection connection;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
 
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM VISUALIZACOES GROUP BY AULA ORDER BY COUNT(*) DESC");
 
@@ -224,10 +224,10 @@ public class RecomendacoesDao {
  
         List<String> lista=new LinkedList<String>();
       
-        ConectionSQLite.connect();
+        ConectionPostgreSQL.connect();
         Connection connection;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:BancoSQL.db");
+            connection = DriverManager.getConnection("jdbc:postgresql://ec2-34-192-173-173.compute-1.amazonaws.com/d8o8ibqrhsnoer?user=jxfbevvuyycmav&password=a607ebffbfcb55e8034373ee206e0796b74e5e5f6d85400aa5de3e19d71279fc&sslmode=require");
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM COMENTARIOS WHERE CATEGORIA='"+cat+"' GROUP BY PLANO ORDER BY COUNT(*) DESC");
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
