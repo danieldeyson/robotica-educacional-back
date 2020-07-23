@@ -10,8 +10,6 @@ public class RoboticaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RoboticaApplication.class, args);
 	
-		
-
 	}
 
 }

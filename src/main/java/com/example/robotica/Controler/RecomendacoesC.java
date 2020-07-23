@@ -8,7 +8,7 @@ import java.util.List;
 import com.example.robotica.DAO.OntologyManager;
 import com.example.robotica.DAO.RecomendacoesDao;
 import com.example.robotica.Model.Aula;
-import com.example.robotica.Model.Recomendacao;
+
 
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,32 +24,7 @@ public class RecomendacoesC {
     RecomendacoesDao recomen = new RecomendacoesDao();
 
 
-    public List<Aula> recomendados(@RequestParam("categoria") String cat) throws JSONException {
-        List<Aula> lista = new ArrayList<Aula>();
-        List<Aula> list = new LinkedList<Aula>();
-        List<Recomendacao> rec = new ArrayList<Recomendacao>();
-        List<String> views = new ArrayList<String>();
-        lista = ont.query();
-        rec = recomen.recomendar(cat);
-        views=recomen.visualizacoesCont();
-
-        for (Recomendacao r : rec) {
-
-            for (Aula a : lista) {
-
-                for (String str: views){
-                if (r.getAula().equals(a.getNome())||str.equals(a.getNome())) {
-                  if(list.contains(a)==false){
-                  
-                    list.add(a);
-                }
-                }
-            }
-            }
-
-        }
-        return list;
-    }
+   
        
             
         @GetMapping("/visualizacoes")
@@ -102,30 +77,15 @@ public class RecomendacoesC {
 
     }
 
-    @GetMapping("/recomendacoeslist")
-    public List<Recomendacao> listarRec() {
-
-        List<Recomendacao> list = new LinkedList<Recomendacao>();
-        try {
-            list = recomen.listarrecs();
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return list;
-    }
+    
 
     @GetMapping("/visualizacoeslist")
     public List<String> viewsRec() {
 
         List<String> list = new LinkedList<String>();
-        try {
+        
             list = recomen.visualizacoesCont();
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        
 
         return list;
     }

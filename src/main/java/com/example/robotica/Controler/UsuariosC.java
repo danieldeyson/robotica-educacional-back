@@ -7,7 +7,7 @@ import java.util.List;
 import com.example.robotica.DAO.Usuarios;
 import com.example.robotica.Model.Professor;
 
-import org.apache.commons.mail.EmailException;
+
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,13 +55,7 @@ public class UsuariosC {
 
   }
 
-  @GetMapping("/esquecisenha")
-  public String esqueciSenha(@RequestParam("ID") int id, @RequestParam("email") String email) throws EmailException {
-
-        
-        return user.esqueciSenha(id, email);
-   
-       }
+  
 
 
 

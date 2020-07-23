@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.example.robotica.DAO.Comentarios;
-import com.example.robotica.DAO.RecomendacoesDao;
+
 import com.example.robotica.DAO.Usuarios;
 import com.example.robotica.Model.Aula;
 import com.example.robotica.Model.Comentario;
-import com.example.robotica.Model.Recomendacao;
+
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,19 +27,13 @@ public class ComentariosC {
     @PostMapping("/comentario")
     public String comentar(@RequestBody Comentario comentario) throws SQLException {
 
-        if(com.comentar(comentario)){
-        RecomendacoesDao rec= new RecomendacoesDao();
-        Recomendacao recomenda= new Recomendacao();
-        recomenda.setIdUser(comentario.getIdUser());
-        recomenda.setCategoria(user.categId(comentario.getIdUser()));
-        recomenda.setAula(comentario.getPlanoAula());
+        if(com.comentar(comentario)){return comentario.getConteudo();}
+        
 
-        rec.cadastrar(recomenda);
-    
-                return comentario.getConteudo();
-                    }else return null;
-                }
-    
+    return null;
+                
+                    
+    }
     
         @PostMapping("/comentarios")
         public List<Comentario> getComentarios(@RequestBody  Aula aula) {
