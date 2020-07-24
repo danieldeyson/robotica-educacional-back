@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface VizualizacoesRepository extends JpaRepository<Visualizacao, Integer> {
-@Query("SELECT aula FROM Visualizacao GROUP BY aula ORDER BY COUNT(*) DESC")
+@Query("SELECT Aula FROM Visualizacao GROUP BY aula ORDER BY COUNT(*) DESC")
 public List<String> findAllCont();
 }
