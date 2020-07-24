@@ -1,22 +1,28 @@
 package com.example.robotica.Model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Professor {
+public class Professor implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+   private Integer id;
     private String nome;
     private String escola;
     private String usuario;
     private String senha;
     private String cidade;
     private String sexo;
-    private int idade;
+    private Integer idade;
     
     
     /**
@@ -28,7 +34,7 @@ public class Professor {
      /**
       * @return the id
       */
-     public int getId() {
+     public Integer getId() {
          return id;
      }
      /**
@@ -60,7 +66,7 @@ public class Professor {
      /**
       * @param id the id to set
       */
-     public void setId(final int id) {
+     public void setId(final Integer id) {
          this.id = id;
      }
 
@@ -101,11 +107,11 @@ public class Professor {
          this.sexo = sexo;
      }
 
-     public int getIdade() {
+     public Integer getIdade() {
          return idade;
      }
 
-     public void setIdade(int idade) {
+     public void setIdade(Integer idade) {
          this.idade = idade;
      }
      

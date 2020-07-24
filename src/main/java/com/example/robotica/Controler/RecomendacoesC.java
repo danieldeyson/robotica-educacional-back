@@ -1,32 +1,37 @@
 package com.example.robotica.Controler;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import com.example.robotica.DAO.OntologyManager;
-import com.example.robotica.DAO.RecomendacoesDao;
 import com.example.robotica.Model.Aula;
+import com.example.robotica.Model.Visualizacao;
+import com.example.robotica.repository.ComentarioRepository;
+import com.example.robotica.repository.VizualizacoesRepository;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class RecomendacoesC {
 
+    @Autowired
+    private VizualizacoesRepository vizualizacoesRepository;
+    @Autowired
+    private ComentarioRepository comentarioRepository;
+
     OntologyManager ont = new OntologyManager();
-    RecomendacoesDao recomen = new RecomendacoesDao();
+    
 
 
-   
-       
-            
         @GetMapping("/visualizacoes")
         public List<Aula> recomendadosRanqueado(@RequestParam("categoria") String cat) throws JSONException {
             List<Aula> lista = new ArrayList<Aula>();
@@ -34,8 +39,8 @@ public class RecomendacoesC {
             List<String> rec = new ArrayList<String>();
             List<String> views = new ArrayList<String>();
             lista = ont.query();
-            rec = recomen.comentariosCont(cat);
-            views=recomen.visualizacoesCont();
+            rec = comentarioRepository.findAllCont(cat);
+            views=vizualizacoesRepository.findAllCont();
     
             for (String str : views) {
     
@@ -82,30 +87,33 @@ public class RecomendacoesC {
     @GetMapping("/visualizacoeslist")
     public List<String> viewsRec() {
 
-        List<String> list = new LinkedList<String>();
-        
-            list = recomen.visualizacoesCont();
-        
-
-        return list;
+        return vizualizacoesRepository.findAllCont();
     }
+
+
     @PostMapping("/visualizacoes")
     public int quantVisual(@RequestBody Aula aula) throws JSONException {
 
-        return recomen.visualizacoes(aula.getNome());
+       return vizualizacoesRepository.contByAula(aula.getNome());
+        
     }
 
     @PostMapping("/visualizacao")
-    public int quantVisual(@RequestParam("iduser") int iduser,@RequestBody Aula aula ) throws JSONException {
+    public int visualizar(@RequestParam("iduser") int iduser,@RequestBody Aula aula ) throws JSONException {
 
-        try {
-            recomen.visualizar(aula.getNome(), iduser);
-            return recomen.visualizacoes(aula.getNome());
-        } catch (SQLException e) {
-            
-            e.printStackTrace();
+        List<Visualizacao> list= vizualizacoesRepository.findAll();
+    
+    for(Visualizacao c:list){
+        if(c.getAula().equals(aula.getNome())&& c.getIduser()==iduser){
+            return 0;
+
         }
-        return recomen.visualizacoes(aula.getNome());
+    }
+          Visualizacao view= new Visualizacao();
+          view.setAula(aula.getNome());
+          view.setIduser(iduser);
+         return vizualizacoesRepository.save(view).getIduser();      
+              
     }
 
 }
