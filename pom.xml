@@ -81,13 +81,18 @@
 
       <pluginManagement>
       <plugins>
-   
      
-        <plugin>
+      <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+	<configuration>
+	<archive>
+		<manifest>
+			<mainClass>com.example.robotica.RoboticaApplication</mainClass>
+		</manifest>
+	</archive>
+	</configuration>
       </plugin>
-     
       
       </plugins>
     </pluginManagement>
