@@ -446,7 +446,7 @@ Reconhecer, em experimentos aleatórios, eventos independentes e dependentes e c
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#TemSerie"/>
-                <owl:hasValue>6º ano</owl:hasValue>
+                <owl:hasValue>6º Ano</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Conteúdo do 6º Ano.
@@ -10109,7 +10109,7 @@ Link da imagem: https://imgur.com/TG9zezm</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#TemSerie"/>
-                <owl:hasValue>8º ano</owl:hasValue>
+                <owl:hasValue>8º Ano</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Conteúdo do 8º Ano
@@ -12099,7 +12099,7 @@ Resolver e elaborar problemas que envolvam operações com números inteiros.</r
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#TemSerie"/>
-                <owl:hasValue>6º ano</owl:hasValue>
+                <owl:hasValue>6º Ano</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#SistemaDeNumeraçãoDecimal"/>
@@ -12532,7 +12532,7 @@ Identificar características dos quadriláteros, classificá-los em relação a 
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#TemSerie"/>
-                <owl:hasValue>8º ano</owl:hasValue>
+                <owl:hasValue>8º Ano</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -12552,20 +12552,6 @@ Identificar características dos quadriláteros, classificá-los em relação a 
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#TemSerie"/>
-                <owl:hasValue>9º ano</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciaComExpoente -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciaComExpoente">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Números"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#TemSerie"/>
                 <owl:hasValue>9º Ano</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -12573,9 +12559,9 @@ Identificar características dos quadriláteros, classificá-los em relação a 
     
 
 
-    <!-- http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao -->
+    <!-- http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacãoERadiação -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao">
+    <owl:Class rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacãoERadiação">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Números"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -12583,6 +12569,30 @@ Identificar características dos quadriláteros, classificá-los em relação a 
                 <owl:hasValue>8º Ano</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment>Conteúdo do 8º Ano
+
+Assunto: Potenciação e radiciação
+
+Resolver e elaborar problemas usando a relação entre potenciação e radiciação, para representar uma raiz como potência de expoente fracionário.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotênciasComExpoente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotênciasComExpoente">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Números"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#TemSerie"/>
+                <owl:hasValue>9º Ano</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Conteúdo do 9º Ano
+
+Assunto: Potências com expoentes negativos e fracionários
+
+Efetuar cálculos com números reais, inclusive potências com expoentes negativos e fracionários.</rdfs:comment>
     </owl:Class>
     
 
@@ -14853,7 +14863,7 @@ Resolver e elaborar problemas relacionados ao seu contexto próximo, que possam 
                 <owl:hasValue>6º Ano</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>Conteúdo do 6 ano.
+        <rdfs:comment>Conteúdo do 6º ano.
 
 Assunto: Sistema de Numeração Decimal
 
@@ -17340,7 +17350,7 @@ Link da imagem: https://imgur.com/lqwHoj5</rdfs:comment>
     <!-- http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciaComExpoente -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciaComExpoente">
-        <rdf:type rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciaComExpoente"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotênciasComExpoente"/>
     </owl:NamedIndividual>
     
 
@@ -17348,7 +17358,7 @@ Link da imagem: https://imgur.com/lqwHoj5</rdfs:comment>
     <!-- http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao">
-        <rdf:type rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacãoERadiação"/>
     </owl:NamedIndividual>
     
 
@@ -19527,20 +19537,6 @@ Assunto: Porcentagens
 
 Resolver e elaborar problemas que envolvam porcentagens, com a ideia de aplicação de percentuais sucessivos e a determinação das taxas percentuais, preferencialmente com o uso de tecnologias digitais, no contexto da educação financeira.</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciaComExpoente">
-        <rdfs:comment>Conteúdo do 9º Ano
-
-Assunto: Potências com expoentes negativos e fracionários
-
-Efetuar cálculos com números reais, inclusive potências com expoentes negativos e fracionários.</rdfs:comment>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao">
-        <rdfs:comment>Conteúdo do 8º Ano
-
-Assunto: Potenciação e radiciação
-
-Resolver e elaborar problemas usando a relação entre potenciação e radiciação, para representar uma raiz como potência de expoente fracionário.</rdfs:comment>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#ProblemasEnvolvendoMedicoes">
         <rdfs:comment>Conteúdo do 7º Ano
 
@@ -19986,8 +19982,8 @@ Link da imagem: https://imgur.com/UQukpVh</rdfs:comment>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Operações"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Porcentagens8"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Porcentagens9"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciaComExpoente"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacãoERadiação"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotênciasComExpoente"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#SistemaDeNumeraçãoDecimal"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#UtilizaçãoDeNúmeroReiasParaMedirQualquerSegmentoDeRetaNúmerosIrracionais"/>
         </owl:members>
@@ -20010,7 +20006,7 @@ Link da imagem: https://imgur.com/UQukpVh</rdfs:comment>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#OperacoesComNumerosRacionais"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Operações"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#Porcentagens8"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacaoeRadiacao"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#PotenciacãoERadiação"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/les-10/ontologies/2019/8/untitled-ontology-12#SistemaDeNumeraçãoDecimal"/>
         </owl:members>
     </rdf:Description>
