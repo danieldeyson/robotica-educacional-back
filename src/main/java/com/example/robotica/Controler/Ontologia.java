@@ -49,11 +49,11 @@ public class Ontologia {
 			   
 		
 				for (String str : views) {
-					System.out.println(str);
+					//System.out.println(str);
 		
 					for (Aula a : lista) {
 		
-						
+						System.out.println(a.getNome());
 						if (str.equals(a.getNome())) {
 						  
 							list.add(a);
